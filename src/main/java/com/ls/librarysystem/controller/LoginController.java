@@ -25,6 +25,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @PostMapping(value = "api/login")
     @ResponseBody
     public Result login(@RequestBody User requestUser, HttpSession session) {
@@ -48,12 +49,14 @@ public class LoginController {
         }
     }
 
+
     @GetMapping("/api/login")
     public Result login() {
         String msg = "非法登录";
         return ResultFactory.buildSuccessResult(msg);
     }
 
+    @CrossOrigin
     @GetMapping("/api/logout")
     @ResponseBody
     public Result logout() {
@@ -64,6 +67,7 @@ public class LoginController {
         return ResultFactory.buildSuccessResult(msg);
     }
 
+    @CrossOrigin
     @PostMapping("/api/register")
     @ResponseBody
     public Result register(@RequestBody User requestUser) {
@@ -79,6 +83,7 @@ public class LoginController {
         return ResultFactory.buildFailureResult("未知错误");
     }
 
+    @CrossOrigin
     @GetMapping("/api/authentication")
     @ResponseBody
     public Result authentication(){
